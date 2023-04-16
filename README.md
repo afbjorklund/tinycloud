@@ -4,6 +4,8 @@ Adaptation of [Tiny Core Linux](http://tinycorelinux.net/), to add `#cloud-confi
 
 The cloud-init script is from: <https://github.com/afbjorklund/tinycloudinit>
 
+![white cloud](assets/cloud.png)
+
 Versions:
 
 `18M	CorePure64-13.1.iso` (CLI)
@@ -41,3 +43,7 @@ sshfs.tcz
    openssh.tcz
       openssl-1.1.1.tcz
 ```
+
+---
+
+White Cloud image credit: Designed by macrovector / [Freepik](http://www.freepik.com)
