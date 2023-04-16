@@ -1,0 +1,15 @@
+--- a/tinycloudinit.sh	2023-04-15 18:56:36.461857684 +0200
++++ b/tinycloudinit.sh	2023-04-16 22:23:36.564857552 +0200
+@@ -25,6 +25,12 @@
+     hostname="$(awk '/^local-hostname:/ {print $2}' $CS.rom/meta-data)"
+     [ -z "$hostname" ] || hostname $hostname
+   fi
++  if [ -f $CS.rom/lima-guestagent ]; then
++    cp $CS.rom/lima-guestagent /usr/local/bin/lima-guestagent
++    chmod 755 /usr/local/bin/lima-guestagent
++    mkdir -p /mnt/lima-cidata
++    cp $CS.rom/meta-data /mnt/lima-cidata/meta-data
++  fi
+   umount $CS.rom
+ done
+ rmdir $CS.rom
