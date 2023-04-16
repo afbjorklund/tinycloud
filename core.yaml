@@ -1,0 +1,10 @@
+images:
+- location: "TC-remastered.iso"
+  arch: "x86_64"
+
+firmware:
+  legacyBIOS: true
+
+containerd:
+  system: false
+  user: false
