@@ -60,6 +60,6 @@ Remember that the standard TC *.tcem files could only be used with the standard 
 ---
 
 Adopted from the Tiny Core Linux wiki:
-> [wiki/custom_kernel.txt](http://wiki.tinycorelinux.net/wiki:custom_kernel) · Last modified: 2013/03/04 17:46 by aus9
+> [wiki/custom_kernel.txt](https://wiki.tinycorelinux.net/doku.php?id=wiki:custom_kernel) · Last modified: 2013/03/04 17:46 by aus9
 >
 > Except where otherwise noted, content on this wiki is licensed under the following license: [CC Attribution-Share Alike 3.0 Unported](http://creativecommons.org/licenses/by-sa/3.0/)
