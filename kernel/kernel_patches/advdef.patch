@@ -1,0 +1,14 @@
+diff --git a/scripts/Makefile.lib b/scripts/Makefile.lib
+index bdf42fd..8f93d8d 100644
+--- a/scripts/Makefile.lib
++++ b/scripts/Makefile.lib
+@@ -244,7 +244,8 @@
+ # ---------------------------------------------------------------------------
+ 
+ quiet_cmd_gzip = GZIP    $@
+-      cmd_gzip = cat $(real-prereqs) | $(KGZIP) -n -f -9 > $@
++      cmd_gzip = cat $(real-prereqs) | $(KGZIP) -n -f -9 > $@ && \
++		( which advdef > /dev/null && advdef -z4 $@ ; true )
+ 
+ # DTC
+ # ---------------------------------------------------------------------------

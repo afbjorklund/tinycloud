@@ -1,0 +1,26 @@
+#!/bin/sh -x
+
+cd
+
+test -r kernel_config || exit 1
+test -d kernel_patches || exit 1
+
+test -r linux-*.tar.xz || exit 1
+
+tce-load -wic coreutils bc perl5 elfutils-dev
+
+test -d linux-*/ || \
+tar xf linux-*.tar.xz
+cd linux-*
+#make mrproper
+rm -f .config
+make defconfig
+cat < .config > ../kernel_defconfig
+for patchfile in ../kernel_patches/*.patch; do
+  patch -p1 < $patchfile
+done
+cp ../kernel_config .config
+make olddefconfig
+cat < .config > ../kernel_config
+make -j `nproc` bzImage
+make -j `nproc` modules
