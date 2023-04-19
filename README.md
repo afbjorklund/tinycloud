@@ -32,6 +32,11 @@ coreutils.tcz
    gmp.tcz
    libcap.tcz
 
+util-linux.tcz
+   readline.tcz
+      ncursesw.tcz
+   udev-lib.tcz
+
 openssh.tcz
    openssl-1.1.1.tcz
 
