@@ -19,8 +19,36 @@ test -e /usr/local/etc/fuse.conf || cp /usr/local/etc/fuse.conf.orig /usr/local/
 if ! grep -q "^user_allow_other" /usr/local/etc/fuse.conf; then
 	echo "user_allow_other" >>/usr/local/etc/fuse.conf
 fi
+ln -s /usr/local/etc/fuse.conf /etc/fuse.conf
 
 /opt/tinycloudinit.sh
 
 cp /mnt/lima-cidata/meta-data /run/lima-ssh-ready
+
+# Install the openrc lima-guestagent service script
+cat >/usr/local/etc/init.d/lima-guestagent <<'EOF'
+#!/bin/sh
+
+start() {
+	if [ ! -e /var/run/lima-guestagent.pid ]; then
+		start-stop-daemon --start --exec /usr/local/bin/lima-guestagent --background -- daemon 2>/dev/null
+	fi
+}
+
+stop() {
+	start-stop-daemon --stop --exec /usr/local/bin/lima-guestagent 2>/dev/null
+}
+
+case $1 in
+	start) start
+		;;
+	stop) stop
+		;;
+	*) echo -e "\n$0 [start|stop]\n"
+		;;
+esac
+EOF
+chmod 755 /usr/local/etc/init.d/lima-guestagent
+/usr/local/etc/init.d/lima-guestagent start
+
 cp /mnt/lima-cidata/meta-data /run/lima-boot-done
