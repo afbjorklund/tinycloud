@@ -6,6 +6,9 @@ test -e /usr/local/etc/ssh/sshd_config || cp /usr/local/etc/ssh/sshd_config.orig
 if ! grep -q "^PasswordAuthentication" /usr/local/etc/ssh/sshd_config; then
 	echo "PasswordAuthentication no" >>/usr/local/etc/ssh/sshd_config
 fi
+if ! grep -q "^AcceptEnv" /usr/local/etc/ssh/sshd_config; then
+	echo "AcceptEnv COLORTERM LANG LC_*" >>/usr/local/etc/ssh/sshd_config
+fi
 for keyType in rsa dsa ecdsa ed25519; do # pre-generate a few SSH host keys to decrease the verbosity of /usr/local/etc/init.d/openssh
 	keyFile="/usr/local/etc/ssh/ssh_host_${keyType}_key"
 	[ ! -f "$keyFile" ] || continue
