@@ -1,10 +1,13 @@
-#!/bin/sh
+#!/bin/sh -x
 
 cd
 
 test -d linux-*/ || exit 1
 
 tce-load -wic coreutils bc perl5 elfutils-dev
+
+# Standard variable is missing in make 4.4.1?
+export MAKEFLAGS=MAKEFILE_LIST=Makefile
 
 path=/tmp/kernel
 rm -rf /tmp/kernel
