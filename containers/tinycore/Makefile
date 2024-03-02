@@ -1,5 +1,5 @@
 IMAGE_NAME := tinycore
-IMAGE_TAG := 13.0-x86_64
+IMAGE_TAG := 15.0-x86_64
 TMP_IMAGE_NAME := $(IMAGE_NAME)-tar-builder
 TMP_CONTAINER_NAME := $(IMAGE_NAME)-tar-exporter
 

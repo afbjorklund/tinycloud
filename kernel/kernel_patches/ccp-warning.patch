@@ -1,8 +1,8 @@
 diff --git a/drivers/crypto/ccp/ccp-crypto-main.c b/drivers/crypto/ccp/ccp-crypto-main.c
-index 88275b4..b23de1e 100644
+index ecd58b38c..65c9cb496 100644
 --- a/drivers/crypto/ccp/ccp-crypto-main.c
 +++ b/drivers/crypto/ccp/ccp-crypto-main.c
-@@ -406,7 +406,7 @@ static int ccp_crypto_init(void)
+@@ -399,7 +399,7 @@ static int __init ccp_crypto_init(void)
  
  	ret = ccp_present();
  	if (ret) {

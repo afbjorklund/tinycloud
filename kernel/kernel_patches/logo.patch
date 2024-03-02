@@ -1,8 +1,8 @@
 diff --git a/drivers/video/logo/Kconfig b/drivers/video/logo/Kconfig
-index d1f6196..47fad76 100644
+index b7d94d1dd..9f7b8e51d 100644
 --- a/drivers/video/logo/Kconfig
 +++ b/drivers/video/logo/Kconfig
-@@ -27,6 +27,10 @@ config LOGO_LINUX_CLUT224
+@@ -28,6 +28,10 @@ config LOGO_LINUX_CLUT224
  	bool "Standard 224-color Linux logo"
  	default y
  
@@ -14,7 +14,7 @@ index d1f6196..47fad76 100644
  	bool "224-color Digital Equipment Corporation Linux logo"
  	depends on MACH_DECSTATION || ALPHA
 diff --git a/drivers/video/logo/Makefile b/drivers/video/logo/Makefile
-index 228a89b..6753003 100644
+index 895c60b84..f3032172f 100644
 --- a/drivers/video/logo/Makefile
 +++ b/drivers/video/logo/Makefile
 @@ -5,6 +5,7 @@ obj-$(CONFIG_LOGO)			+= logo.o
@@ -26,10 +26,10 @@ index 228a89b..6753003 100644
  obj-$(CONFIG_LOGO_MAC_CLUT224)		+= logo_mac_clut224.o
  obj-$(CONFIG_LOGO_PARISC_CLUT224)	+= logo_parisc_clut224.o
 diff --git a/drivers/video/logo/logo.c b/drivers/video/logo/logo.c
-index 36aa050..16159d9 100644
+index 141f15a9a..4ae43db8f 100644
 --- a/drivers/video/logo/logo.c
 +++ b/drivers/video/logo/logo.c
-@@ -52,6 +52,10 @@ const struct linux_logo * __ref fb_find_logo(int depth)
+@@ -53,6 +53,10 @@ const struct linux_logo * __ref fb_find_logo(int depth)
  		/* Generic Linux logo */
  		logo = &logo_linux_mono;
  #endif
@@ -40,6 +40,18 @@ index 36aa050..16159d9 100644
  #ifdef CONFIG_LOGO_SUPERH_MONO
  		/* SuperH Linux logo */
  		logo = &logo_superh_mono;
+diff --git a/include/linux/linux_logo.h b/include/linux/linux_logo.h
+index d4d5b93ef..184a67b31 100644
+--- a/include/linux/linux_logo.h
++++ b/include/linux/linux_logo.h
+@@ -36,6 +36,7 @@ struct linux_logo {
+ extern const struct linux_logo logo_linux_mono;
+ extern const struct linux_logo logo_linux_vga16;
+ extern const struct linux_logo logo_linux_clut224;
++extern const struct linux_logo logo_tinycore_clut224;
+ extern const struct linux_logo logo_dec_clut224;
+ extern const struct linux_logo logo_mac_clut224;
+ extern const struct linux_logo logo_parisc_clut224;
 diff --git a/drivers/video/logo/logo_tinycore_clut224.ppm b/drivers/video/logo/logo_tinycore_clut224.ppm
 new file mode 100644
 index 0000000..b023236
@@ -3649,15 +3661,3 @@ index 0000000..b023236
 +10 10 10 5 5 5 5 5 5 5 5 5 10 5 5 10 5
 +5 5 5 5 10 10 10 10 10 10 10 10 10 10 5 10 10
 +10 10 10 10 10 5 10 19 10 10 10
-diff --git a/include/linux/linux_logo.h b/include/linux/linux_logo.h
-index d4d5b93..184a67b 100644
---- a/include/linux/linux_logo.h
-+++ b/include/linux/linux_logo.h
-@@ -36,6 +36,7 @@ struct linux_logo {
- extern const struct linux_logo logo_linux_mono;
- extern const struct linux_logo logo_linux_vga16;
- extern const struct linux_logo logo_linux_clut224;
-+extern const struct linux_logo logo_tinycore_clut224;
- extern const struct linux_logo logo_dec_clut224;
- extern const struct linux_logo logo_mac_clut224;
- extern const struct linux_logo logo_parisc_clut224;

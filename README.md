@@ -8,9 +8,9 @@ The cloud-init script is from: <https://github.com/afbjorklund/tinycloudinit>
 
 Versions:
 
-`18M	CorePure64-13.1.iso` (CLI)
+`20M	CorePure64-15.0.iso` (CLI)
 
-`30M	TinyCorePure64-13.1.iso` (GUI)
+`32M	TinyCorePure64-15.0.iso` (GUI)
 
 Packages:
 

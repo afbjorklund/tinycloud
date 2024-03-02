@@ -1,8 +1,8 @@
 diff --git a/fs/squashfs/super.c b/fs/squashfs/super.c
-index 260e392..c423a29 100644
+index 22e812808..c847d463c 100644
 --- a/fs/squashfs/super.c
 +++ b/fs/squashfs/super.c
-@@ -112,7 +112,7 @@ static int squashfs_fill_super(struct super_block *sb, struct fs_context *fc)
+@@ -228,7 +228,7 @@ static int squashfs_fill_super(struct super_block *sb, struct fs_context *fc)
  	sb->s_magic = le32_to_cpu(sblk->s_magic);
  	if (sb->s_magic != SQUASHFS_MAGIC) {
  		if (!(fc->sb_flags & SB_SILENT))

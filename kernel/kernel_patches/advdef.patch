@@ -1,8 +1,8 @@
 diff --git a/scripts/Makefile.lib b/scripts/Makefile.lib
-index bdf42fd..8f93d8d 100644
+index 68d0134bd..29b36c574 100644
 --- a/scripts/Makefile.lib
 +++ b/scripts/Makefile.lib
-@@ -244,7 +244,8 @@
+@@ -335,7 +335,8 @@ cmd_objcopy = $(OBJCOPY) $(OBJCOPYFLAGS) $(OBJCOPYFLAGS_$(@F)) $< $@
  # ---------------------------------------------------------------------------
  
  quiet_cmd_gzip = GZIP    $@

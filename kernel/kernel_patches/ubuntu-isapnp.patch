@@ -1,8 +1,8 @@
 diff --git a/drivers/pnp/isapnp/core.c b/drivers/pnp/isapnp/core.c
-index 918d5f0..972fde6 100644
+index c43d8ad02..48a3c3503 100644
 --- a/drivers/pnp/isapnp/core.c
 +++ b/drivers/pnp/isapnp/core.c
-@@ -41,6 +41,7 @@
+@@ -27,6 +27,7 @@
  #include <linux/init.h>
  #include <linux/isapnp.h>
  #include <linux/mutex.h>
@@ -10,7 +10,7 @@ index 918d5f0..972fde6 100644
  #include <asm/io.h>
  
  #include "../base.h"
-@@ -1001,7 +1002,7 @@ struct pnp_protocol isapnp_protocol = {
+@@ -950,7 +951,7 @@ struct pnp_protocol isapnp_protocol = {
  	.disable = isapnp_disable_resources,
  };
  
@@ -19,7 +19,7 @@ index 918d5f0..972fde6 100644
  {
  	int cards;
  	struct pnp_card *card;
-@@ -1095,6 +1096,16 @@ static int __init isapnp_init(void)
+@@ -1044,6 +1045,16 @@ static int __init isapnp_init(void)
  	return 0;
  }
  

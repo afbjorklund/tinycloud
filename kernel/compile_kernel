@@ -9,6 +9,9 @@ test -r linux-*.tar.xz || exit 1
 
 tce-load -wic coreutils bc perl5 elfutils-dev
 
+# Standard variable is missing in make 4.4.1?
+export MAKEFLAGS=MAKEFILE_LIST=Makefile
+
 test -d linux-*/ || \
 tar xf linux-*.tar.xz
 cd linux-*

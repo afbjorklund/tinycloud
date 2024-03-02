@@ -1,5 +1,5 @@
 #!/bin/sh
-URL_TCZ=http://tinycorelinux.net/13.x/x86_64/tcz
+URL_TCZ=http://tinycorelinux.net/15.x/x86_64/tcz
 
 apk add --no-cache curl squashfs-tools >/dev/null
 

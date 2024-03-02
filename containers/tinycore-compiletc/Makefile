@@ -1,7 +1,7 @@
 DOCKER = docker
 
 IMAGE_NAME := tinycore-compiletc
-IMAGE_TAG := 13.0-x86_64
+IMAGE_TAG := 15.0-x86_64
 
 .PHONY: all clean build
 
