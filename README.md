@@ -38,7 +38,7 @@ util-linux.tcz
    udev-lib.tcz
 
 openssh.tcz
-   openssl-1.1.1.tcz
+   openssl.tcz
 
 sshfs.tcz
    fuse3.tcz
@@ -46,7 +46,7 @@ sshfs.tcz
       libffi.tcz
       pcre.tcz
    openssh.tcz
-      openssl-1.1.1.tcz
+      openssl.tcz
 ```
 
 ---
