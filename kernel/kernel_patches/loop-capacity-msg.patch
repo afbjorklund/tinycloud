@@ -1,0 +1,13 @@
+diff --git a/block/genhd.c b/block/genhd.c
+index cc32a0c70..8d56dd3f7 100644
+--- a/block/genhd.c
++++ b/block/genhd.c
+@@ -83,7 +83,7 @@ bool set_capacity_and_notify(struct gendisk *disk, sector_t size)
+ 	    (disk->flags & GENHD_FL_HIDDEN))
+ 		return false;
+ 
+-	pr_info("%s: detected capacity change from %lld to %lld\n",
++	pr_debug("%s: detected capacity change from %lld to %lld\n",
+ 		disk->disk_name, capacity, size);
+ 
+ 	/*
