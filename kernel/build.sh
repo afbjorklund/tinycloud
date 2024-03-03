@@ -21,5 +21,5 @@ chmod 666 kernel_defconfig
 docker exec -i tinycore-kernel sh -x < compile_kernel
 docker exec -i tinycore-kernel sh -x < package_kernel
 
-docker cp tinycore-kernel:/home/tc/vmlinuz64 .
-docker cp tinycore-kernel:/home/tc/modules .
+docker cp tinycore-kernel:/home/tc/vmlinuz64 vmlinuz64
+docker cp tinycore-kernel:/home/tc/modules modules
