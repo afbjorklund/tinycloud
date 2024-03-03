@@ -28,6 +28,8 @@ ln -s /usr/local/etc/fuse.conf /etc/fuse.conf
 
 cp /mnt/lima-cidata/meta-data /run/lima-ssh-ready
 
+while read -r line; do export "$line"; done <"${LIMA_CIDATA_MNT}"/lima.env
+
 # Install the openrc lima-guestagent service script
 cat >/usr/local/etc/init.d/lima-guestagent <<'EOF'
 #!/bin/sh
