@@ -3,6 +3,7 @@ kernel_version=6.6.8
 
 kernel_volumes="--volume $PWD/kernel_config:/home/tc/kernel_config \
                 --volume $PWD/kernel_defconfig:/home/tc/kernel_defconfig \
+                --volume $PWD/kernel_newconfig:/home/tc/kernel_newconfig \
                 --volume $PWD/kernel_patches:/home/tc/kernel_patches"
 
 docker container inspect --format '{{.Id}}' tinycore-kernel \
@@ -17,6 +18,7 @@ docker exec tinycore-kernel test -e /home/tc/linux-$kernel_version.tar.xz \
 
 chmod 666 kernel_config
 chmod 666 kernel_defconfig
+chmod 666 kernel_newconfig
 
 docker exec -i tinycore-kernel sh -x < compile_kernel
 docker exec -i tinycore-kernel sh -x < package_kernel

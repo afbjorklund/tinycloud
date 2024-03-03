@@ -25,5 +25,7 @@ done
 cp ../kernel_config .config
 make olddefconfig
 cat < .config > ../kernel_config
+make savedefconfig
+cat < defconfig > ../kernel_newconfig
 make -j `nproc` bzImage
 make -j `nproc` modules
