@@ -5,6 +5,11 @@ images:
 firmware:
   legacyBIOS: true
 
+mounts:
+- location: "~"
+- location: "/tmp/lima"
+  writable: true
+
 containerd:
   system: false
   user: false

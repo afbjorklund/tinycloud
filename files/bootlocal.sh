@@ -30,6 +30,18 @@ cp /mnt/lima-cidata/meta-data /run/lima-ssh-ready
 
 while read -r line; do export "$line"; done <"${LIMA_CIDATA_MNT}"/lima.env
 
+if [ "${LIMA_CIDATA_MOUNTTYPE}" = "reverse-sshfs" ]; then
+	# Create mount points
+	# NOTE: Busybox sh does not support `for ((i=0;i<$N;i++))` form
+	for f in $(seq 0 $((LIMA_CIDATA_MOUNTS - 1))); do
+		mountpointvar="LIMA_CIDATA_MOUNTS_${f}_MOUNTPOINT"
+		mountpoint="$(eval echo \$"$mountpointvar")"
+		mkdir -p "${mountpoint}"
+		gid=$(id -g "${LIMA_CIDATA_USER}")
+		chown "${LIMA_CIDATA_UID}:${gid}" "${mountpoint}"
+	done
+fi
+
 # Install the openrc lima-guestagent service script
 cat >/usr/local/etc/init.d/lima-guestagent <<'EOF'
 #!/bin/sh
