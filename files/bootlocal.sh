@@ -28,7 +28,7 @@ ln -s /usr/local/etc/fuse.conf /etc/fuse.conf
 
 cp /mnt/lima-cidata/meta-data /run/lima-ssh-ready
 
-while read -r line; do export "$line"; done <"${LIMA_CIDATA_MNT}"/lima.env
+while read -r line; do export "$line"; done </mnt/lima-cidata/lima.env
 
 if [ "${LIMA_CIDATA_MOUNTTYPE}" = "reverse-sshfs" ]; then
 	# Create mount points
