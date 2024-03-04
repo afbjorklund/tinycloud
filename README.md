@@ -10,7 +10,7 @@ Versions:
 
 `20M	CorePure64-15.0.iso` (CLI)
 
-`32M	TinyCorePure64-15.0.iso` (GUI)
+`33M	TinyCorePure64-15.0.iso` (GUI)
 
 Packages:
 
