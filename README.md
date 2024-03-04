@@ -47,6 +47,22 @@ sshfs.tcz
       openssl.tcz
 ```
 
+## Packages
+
+To install .tcz packages, use the regular 'tc' user:
+
+```console
+anders@lima-core:~$ sudo -i tc
+^
+   ( '>')
+  /) TC (\   Core is distributed with ABSOLUTELY NO WARRANTY.
+ (/-_--_-\)           www.tinycorelinux.net
+
+tc@lima-core:~$
+```
+
+Then you will have access to the regular tce commands.
+
 ---
 
 White Cloud image credit: Designed by macrovector / [Freepik](http://www.freepik.com)
