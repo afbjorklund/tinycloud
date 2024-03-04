@@ -14,7 +14,7 @@ Versions:
 
 Packages:
 
-`acpid.tcz bash.tcz coreutils.tcz openssh.tcz sshfs.tcz`
+`acpid.tcz bash.tcz coreutils.tcz util-linux.tcz openssh.tcz sshfs.tcz`
 
 Note: the `acpid` daemon allows powering down the system, using ACPI.
 
