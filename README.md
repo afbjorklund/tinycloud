@@ -28,9 +28,7 @@ bash.tcz
       ncursesw.tcz
 
 coreutils.tcz
-   acl.tcz
    gmp.tcz
-   libcap.tcz
 
 util-linux.tcz
    readline.tcz
@@ -44,7 +42,7 @@ sshfs.tcz
    fuse3.tcz
    glib2.tcz
       libffi.tcz
-      pcre.tcz
+      pcre21042.tcz
    openssh.tcz
       openssl.tcz
 ```
