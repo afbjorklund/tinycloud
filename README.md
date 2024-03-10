@@ -85,6 +85,27 @@ Description:    ssh filesystem client
 Version:        3.7.0
 ```
 
+Package Size:
+
+```
+36K	acpid.tcz
+540K	bash.tcz
+2.4M	coreutils.tcz
+88K	fuse3.tcz
+1.6M	glib2.tcz
+252K	gmp.tcz
+16K	libffi.tcz
+252K	ncursesw.tcz
+1.8M	openssh.tcz
+2.9M	openssl.tcz
+672K	pcre21042.tcz
+148K	readline.tcz
+28K	sshfs.tcz
+24K	udev-lib.tcz
+1.6M	util-linux.tcz
+13M	total
+```
+
 ## Packages
 
 To install .tcz packages, use the regular 'tc' user:
