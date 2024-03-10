@@ -6,11 +6,19 @@ The cloud-init script is from: <https://github.com/afbjorklund/tinycloudinit>
 
 ![white cloud](assets/cloud.png)
 
-Versions:
+Variants:
 
 `20M	CorePure64-15.0.iso` (CLI)
 
 `33M	TinyCorePure64-15.0.iso` (GUI)
+
+Components:
+
+- Glibc 2.38
+
+- Linux 6.6.5
+
+- Busybox 1.36.1
 
 Packages:
 
@@ -18,7 +26,7 @@ Packages:
 
 Note: the `acpid` daemon allows powering down the system, using ACPI.
 
-Dep Tree:
+Dep Tree (`.tree`):
 
 ```
 acpid.tcz
@@ -45,6 +53,34 @@ sshfs.tcz
       pcre21042.tcz
    openssh.tcz
       openssl.tcz
+```
+
+Package Info (`.info`):
+
+```
+Title:          acpid.tcz
+Description:    acpid daemon
+Version:        2.0.32
+...
+Title:          bash.tcz
+Description:    bash shell
+Version:        5.2.21
+...
+Title:          coreutils.tcz
+Description:    core utilities
+Version:        9.4
+...
+Title:          util-linux.tcz
+Description:    linux tools
+Version:        2.39.3
+...
+Title:		openssh.tcz
+Description:	openssh client and server
+Version:	9.5p1
+...
+Title:          sshfs.tcz
+Description:    ssh filesystem client
+Version:        3.7.0
 ```
 
 ## Packages
