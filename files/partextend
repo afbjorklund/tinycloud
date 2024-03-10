@@ -1,0 +1,24 @@
+#!/bin/sh -ex
+
+d=$1
+n=$2
+
+test -e $d || exit 1
+
+# Device  Boot StartCHS    EndCHS        StartLBA     EndLBA    Sectors  Size Id Type
+# /dev/vda1    0,0,2       178,12,44            1  209715199  209715199 99.9G 83 Linux
+
+s=$(/sbin/fdisk -l $d | grep Linux | awk '{ print $4 }')
+
+# extend existing partition
+(
+echo d  # delete partition
+echo $n # partition number
+echo c  # dos compatibility
+echo n  # create new partition
+echo p  # primary partition
+echo $n # partition number
+echo $s # First sector
+echo    # Last sector (Accept default)
+echo w  # write changes
+) | /sbin/fdisk $d
