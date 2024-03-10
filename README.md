@@ -24,7 +24,7 @@ Components:
 
 Packages:
 
-`acpid.tcz bash.tcz coreutils.tcz util-linux.tcz openssh.tcz sshfs.tcz`
+`acpid.tcz bash.tcz coreutils.tcz util-linux.tcz udev-extra.tcz openssh.tcz sshfs.tcz`
 
 Note: the `acpid` daemon allows powering down the system, using ACPI.
 
@@ -44,6 +44,13 @@ util-linux.tcz
    readline.tcz
       ncursesw.tcz
    udev-lib.tcz
+
+udev-extra.tcz
+   pciutils.tcz
+      libpci.tcz
+   usb-utils.tcz
+      libusb.tcz
+         udev-lib.tcz
 
 openssh.tcz
    openssl.tcz
@@ -76,6 +83,10 @@ Title:          util-linux.tcz
 Description:    linux tools
 Version:        2.39.3
 ...
+Title:          udev-extra.tcz
+Description:    additional udev tools
+Version:        174
+...
 Title:		openssh.tcz
 Description:	openssh client and server
 Version:	9.5p1
@@ -95,13 +106,18 @@ Package Size:
 1.6M	glib2.tcz
 252K	gmp.tcz
 16K	libffi.tcz
+24K	libpci.tcz
+48K	libusb.tcz
 252K	ncursesw.tcz
 1.8M	openssh.tcz
 2.9M	openssl.tcz
+276K	pciutils.tcz
 672K	pcre21042.tcz
 148K	readline.tcz
 28K	sshfs.tcz
+100K	udev-extra.tcz
 24K	udev-lib.tcz
+288K	usb-utils.tcz
 1.6M	util-linux.tcz
 13M	total
 ```

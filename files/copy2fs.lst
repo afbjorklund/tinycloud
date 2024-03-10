@@ -1,0 +1,6 @@
+libpci
+pciutils
+libusb
+usb-utils
+udev-lib
+udev-extra

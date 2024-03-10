@@ -2,5 +2,6 @@ acpid.tcz
 bash.tcz
 coreutils.tcz
 util-linux.tcz
+udev-extra.tcz
 openssh.tcz
 sshfs.tcz
