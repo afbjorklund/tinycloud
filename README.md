@@ -24,7 +24,7 @@ Components:
 
 Packages:
 
-`acpid.tcz bash.tcz coreutils.tcz util-linux.tcz udev-extra.tcz openssh.tcz sshfs.tcz`
+`acpid.tcz bash.tcz coreutils.tcz util-linux.tcz udev-extra.tcz e2fsprogs.tcz openssh.tcz sshfs.tcz`
 
 Note: the `acpid` daemon allows powering down the system, using ACPI.
 
@@ -51,6 +51,8 @@ udev-extra.tcz
    usb-utils.tcz
       libusb.tcz
          udev-lib.tcz
+
+e2fsprogs.tcz
 
 openssh.tcz
    openssl.tcz

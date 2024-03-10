@@ -3,5 +3,6 @@ bash.tcz
 coreutils.tcz
 util-linux.tcz
 udev-extra.tcz
+e2fsprogs.tcz
 openssh.tcz
 sshfs.tcz
