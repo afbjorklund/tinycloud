@@ -28,6 +28,47 @@ ln -s /usr/local/etc/fuse.conf /etc/fuse.conf
 
 cp /mnt/lima-cidata/meta-data /run/lima-ssh-ready
 
+# When running from RAM try to move persistent data to data-volume
+if [ "$(awk '$2 == "/" {print $3}' /proc/mounts)" == "rootfs" ]; then
+	mkdir -p /mnt/data
+	if [ -e /dev/disk/by-label/data-volume ]; then
+		# Find which disk is data volume on
+		DATA_DISK=$(blkid | grep "data-volume" | awk '{split($0,s,":"); sub(/\d$/, "", s[1]); print s[1]};')
+		# Automatically expand the data volume filesystem
+		partextend "$DATA_DISK" 1 || true
+		partx -u "$DATA_DISK"
+		# Only resize when filesystem is in a healthy state
+		if e2fsck -f -p /dev/disk/by-label/data-volume; then
+			resize2fs /dev/disk/by-label/data-volume || true
+		fi
+		# Mount data volume
+		mount -t ext4 /dev/disk/by-label/data-volume /mnt/data
+	else
+		# Find an unpartitioned disk and create data-volume
+		DISKS=$(lsblk --list --noheadings --output name,type | awk '$2 == "disk" {print $1}' | grep -v zram)
+		for DISK in ${DISKS}; do
+			IN_USE=false
+			# Looking for a disk that is not mounted or partitioned
+			# shellcheck disable=SC2013
+			for PART in $(awk '/^\/dev\// {gsub("/dev/", ""); print $1}' /proc/mounts); do
+				if [ "${DISK}" == "${PART}" ] || [ -e /sys/block/"${DISK}"/"${PART}" ]; then
+					IN_USE=true
+					break
+				fi
+			done
+			if [ "${IN_USE}" == "false" ]; then
+				echo 'type=83' | sfdisk --label dos /dev/"${DISK}"
+				partx -a /dev/"${DISK}"
+				PART=$(lsblk --list /dev/"${DISK}" --noheadings --output name,type | awk '$2 == "part" {print $1}')
+				until [ -e /dev/"${PART}" ]; do sleep 1; done
+				mkfs.ext4 -L data-volume /dev/"${PART}"
+				mount -t ext4 /dev/"${PART}" /mnt/data
+				break
+			fi
+		done
+	fi
+fi
+
 while read -r line; do export "$line"; done </mnt/lima-cidata/lima.env
 
 if [ "${LIMA_CIDATA_MOUNTTYPE}" = "reverse-sshfs" ]; then
