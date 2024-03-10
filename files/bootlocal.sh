@@ -67,6 +67,15 @@ if [ "$(awk '$2 == "/" {print $3}' /proc/mounts)" == "rootfs" ]; then
 			fi
 		done
 	fi
+	# Use data-volume for packages
+	TCEDIR=/mnt/data/tce
+	if [ ! -d "$TCEDIR"/optional ]; then
+		mkdir -p "$TCEDIR"/optional
+		chown tc:staff "$TCEDIR"
+		chmod g+w "$TCEDIR"
+	fi
+	rm -f /etc/sysconfig/tcedir
+	ln -s ${TCEDIR} /etc/sysconfig/tcedir
 fi
 
 while read -r line; do export "$line"; done </mnt/lima-cidata/lima.env
