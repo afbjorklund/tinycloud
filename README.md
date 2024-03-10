@@ -89,6 +89,10 @@ Title:          udev-extra.tcz
 Description:    additional udev tools
 Version:        174
 ...
+Title:          e2fsprogs.tcz
+Description:    e2fsprogs
+Version:        1.47.0
+...
 Title:		openssh.tcz
 Description:	openssh client and server
 Version:	9.5p1
