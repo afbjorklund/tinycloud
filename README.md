@@ -104,6 +104,7 @@ Package Size:
 36K	acpid.tcz
 540K	bash.tcz
 2.4M	coreutils.tcz
+484K	e2fsprogs.tcz
 88K	fuse3.tcz
 1.6M	glib2.tcz
 252K	gmp.tcz
@@ -121,7 +122,7 @@ Package Size:
 24K	udev-lib.tcz
 288K	usb-utils.tcz
 1.6M	util-linux.tcz
-13M	total
+14M	total
 ```
 
 ## Packages
