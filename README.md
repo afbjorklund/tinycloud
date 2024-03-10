@@ -12,6 +12,8 @@ Variants:
 
 `33M	TinyCorePure64-15.0.iso` (GUI)
 
+<img alt="tiny qemu" src="assets/tiny-qemu.png" width="261" height="212" />
+
 Components:
 
 - Glibc 2.38
