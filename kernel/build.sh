@@ -23,5 +23,9 @@ chmod 666 kernel_newconfig
 docker exec -i tinycore-kernel sh -x < compile_kernel
 docker exec -i tinycore-kernel sh -x < package_kernel
 
+rm -rf modules alsa-modules
+
 docker cp tinycore-kernel:/home/tc/vmlinuz64 vmlinuz64
 docker cp tinycore-kernel:/home/tc/modules modules
+mkdir -p alsa-modules/$kernel_version-tinycore64/kernel
+mv modules/$kernel_version-tinycore64/kernel/sound alsa-modules/$kernel_version-tinycore64/kernel/sound
