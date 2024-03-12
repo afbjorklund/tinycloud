@@ -24,3 +24,4 @@ cd -
 find modules -name '*.ko.gz' | xargs rm -f
 find modules -name '*.ko' | xargs -n 1 gzip -9
 sed -e 's/.ko/.ko.gz/g' -i modules/*/modules.dep
+rm -f modules/*/build # remove dangling symlink
