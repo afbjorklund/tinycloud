@@ -24,6 +24,8 @@ if ! grep -q "^user_allow_other" /usr/local/etc/fuse.conf; then
 fi
 ln -s /usr/local/etc/fuse.conf /etc/fuse.conf
 
+rm -f /usr/local/bin/more
+
 /opt/tinycloudinit.sh
 
 cp /mnt/lima-cidata/meta-data /run/lima-ssh-ready
