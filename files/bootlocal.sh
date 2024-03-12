@@ -71,8 +71,8 @@ if [ "$(awk '$2 == "/" {print $3}' /proc/mounts)" == "rootfs" ]; then
 	TCEDIR=/mnt/data/tce
 	if [ ! -d "$TCEDIR"/optional ]; then
 		mkdir -p "$TCEDIR"/optional
-		chown tc:staff "$TCEDIR"
-		chmod g+w "$TCEDIR"
+		chown -R tc:staff "$TCEDIR"
+		chmod -R g+w "$TCEDIR"
 	fi
 	rm -f /etc/sysconfig/tcedir
 	ln -s ${TCEDIR} /etc/sysconfig/tcedir
