@@ -10,6 +10,9 @@ mounts:
 - location: "/tmp/lima"
   writable: true
 
+mountTypesUnsupported:
+- "9p"
+
 containerd:
   system: false
   user: false
