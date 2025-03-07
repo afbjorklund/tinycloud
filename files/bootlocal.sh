@@ -63,10 +63,12 @@ if [ "$(awk '$2 == "/" {print $3}' /proc/mounts)" == "rootfs" ]; then
 				partx -a /dev/"${DISK}"
 				PART=$(lsblk --list /dev/"${DISK}" --noheadings --output name,type | awk '$2 == "part" {print $1}')
 				until [ -e /dev/"${PART}" ]; do sleep 1; done
-				mkfs.ext4 -L data-volume /dev/"${PART}"
-				mkdir -p /mnt/data
-				mount -t ext4 /dev/"${PART}" /mnt/data
-				break
+				if [ -n "$PART" ]; then
+					mkfs.ext4 -L data-volume /dev/"${PART}"
+					mkdir -p /mnt/data
+					mount -t ext4 /dev/"${PART}" /mnt/data
+					break
+				fi
 			fi
 		done
 	fi
