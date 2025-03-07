@@ -76,14 +76,19 @@ if [ "$(awk '$2 == "/" {print $3}' /proc/mounts)" == "rootfs" ]; then
 	elif [ -d /mnt/vda ]; then
 		resize2fs /dev/vda
 		TCEDIR=/mnt/vda/tce
+	elif [ -d /mnt/sda ]; then
+		resize2fs /dev/sda
+		TCEDIR=/mnt/sda/tce
 	fi
-	if [ ! -d "$TCEDIR"/optional ]; then
-		mkdir -p "$TCEDIR"/optional
-		chown -R tc:staff "$TCEDIR"
-		chmod -R g+w "$TCEDIR"
+	if [ -n "$TCEDIR" ]; then
+		if [ ! -d "$TCEDIR"/optional ]; then
+			mkdir -p "$TCEDIR"/optional
+			chown -R tc:staff "$TCEDIR"
+			chmod -R g+w "$TCEDIR"
+			fi
+		rm -f /etc/sysconfig/tcedir
+		ln -s ${TCEDIR} /etc/sysconfig/tcedir
 	fi
-	rm -f /etc/sysconfig/tcedir
-	ln -s ${TCEDIR} /etc/sysconfig/tcedir
 fi
 
 while read -r line; do export "$line"; done </mnt/lima-cidata/lima.env
