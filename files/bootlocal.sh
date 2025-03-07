@@ -47,7 +47,7 @@ if [ "$(awk '$2 == "/" {print $3}' /proc/mounts)" == "rootfs" ]; then
 		mount -t ext4 /dev/disk/by-label/data-volume /mnt/data
 	else
 		# Find an unpartitioned disk and create data-volume
-		DISKS=$(lsblk --list --noheadings --output name,type | awk '$2 == "disk" {print $1}' | grep -v zram)
+		DISKS=$(lsblk --list --noheadings --output name,type | awk '$2 == "disk" {print $1}' | grep -v zram | grep -v fd0)
 		for DISK in ${DISKS}; do
 			IN_USE=false
 			# Looking for a disk that is not mounted or partitioned
