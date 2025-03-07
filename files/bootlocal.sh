@@ -32,7 +32,6 @@ cp /mnt/lima-cidata/meta-data /run/lima-ssh-ready
 
 # When running from RAM try to move persistent data to data-volume
 if [ "$(awk '$2 == "/" {print $3}' /proc/mounts)" == "rootfs" ]; then
-	mkdir -p /mnt/data
 	if [ -e /dev/disk/by-label/data-volume ]; then
 		# Find which disk is data volume on
 		DATA_DISK=$(blkid | grep "data-volume" | awk '{split($0,s,":"); sub(/\d$/, "", s[1]); print s[1]};')
@@ -44,6 +43,7 @@ if [ "$(awk '$2 == "/" {print $3}' /proc/mounts)" == "rootfs" ]; then
 			resize2fs /dev/disk/by-label/data-volume || true
 		fi
 		# Mount data volume
+		mkdir -p /mnt/data
 		mount -t ext4 /dev/disk/by-label/data-volume /mnt/data
 	else
 		# Find an unpartitioned disk and create data-volume
@@ -64,13 +64,19 @@ if [ "$(awk '$2 == "/" {print $3}' /proc/mounts)" == "rootfs" ]; then
 				PART=$(lsblk --list /dev/"${DISK}" --noheadings --output name,type | awk '$2 == "part" {print $1}')
 				until [ -e /dev/"${PART}" ]; do sleep 1; done
 				mkfs.ext4 -L data-volume /dev/"${PART}"
+				mkdir -p /mnt/data
 				mount -t ext4 /dev/"${PART}" /mnt/data
 				break
 			fi
 		done
 	fi
-	# Use data-volume for packages
-	TCEDIR=/mnt/data/tce
+	if [ -d /mnt/data ]; then
+		# Use data-volume for packages
+		TCEDIR=/mnt/data/tce
+	elif [ -d /mnt/vda ]; then
+		resize2fs /dev/vda
+		TCEDIR=/mnt/vda/tce
+	fi
 	if [ ! -d "$TCEDIR"/optional ]; then
 		mkdir -p "$TCEDIR"/optional
 		chown -R tc:staff "$TCEDIR"
